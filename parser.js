@@ -41,14 +41,9 @@ module.exports = {
         start = html.indexOf('\"', start) + 1;
         end = html.indexOf('\"', start);
         date = html.substring(start, end);      
-        
-        console.log(`${title}, ${rent}, ${size}, ${rooms}, ${date}, ${href}`);
-
-        console.log(toDate(date));
-        console.log(startingDate);
 
         if (href !== lastHref && toDate(date) > startingDate) {
-            console.log(`${date}: ${title}`);
+            console.log(`New ad: ${title}, ${rent}, ${size}, ${rooms}, ${date}, ${href}`);
             lastHref = href;
             return `${title}, ${rent}, ${size}, ${rooms}, ${date}, ${href}`;
         }

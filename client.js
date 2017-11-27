@@ -29,7 +29,7 @@ client.on('ready', (evt) => {
 
 const sendMessage = (message) => {
     client.sendMessage({
-        to: '384784131432775701',
+        to: '384784131432775701', // channel id from discord
         message: message
     });
 };
@@ -44,4 +44,4 @@ const requestLoop = setInterval(() => {
     }).catch((error) => {
         console.log(error);
     });
-}, 60000);
+}, 60000); // interval
