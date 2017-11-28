@@ -1,6 +1,8 @@
 let lastHref = "";
 let startingDate = new Date();
 
+const MIN_PRICE = 7000;
+
 module.exports = {
     parse: (html) => {
         let href, title, rooms, rent, size, date;
@@ -42,12 +44,34 @@ module.exports = {
         date = html.substring(start, end);      
 
         if (href !== lastHref && toDate(date) > startingDate) {
-            console.log(`New ad: ${title}, ${rent}, ${size}, ${rooms}, ${date}, ${href}`);
+            console.log(" ");
+            console.log(`${title}, ${rent}, ${size}, ${rooms}, ${date}, ${href}`);
             lastHref = href;
             return `${title}, ${rent}, ${size}, ${rooms}, ${date}, ${href}`;
         }
     }
 };
+
+const rentIsLargerThan = (rentStr, min) => {
+    let index = rentStr.indexOf('k');
+    console.log(index);
+    if (index >= 0) {
+        console.log(rentStr.substring(0, index));
+        rentStr = rentStr.substring(0, index);
+        rentStr = Regex.Replace(rentStr, " +( |$)", "$1");
+        console.log(rentStr);
+        let rent = Number(rentStr.substring(0, index));
+        console.log(rent);
+        if (! isNaN(rent)) {
+            console.log(rent + " => " + min);
+            return rent >= min;
+        }
+    }
+    // if the parsing failed, just return true. The rent will
+    // atleast be less then the max rent passed in the URL.
+    console.log("parsing failed, returns true");
+    return true;
+}
 
 // works for YYYY-MM-DD hh:mm:ss
 const toDate = (str) => {

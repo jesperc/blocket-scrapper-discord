@@ -5,6 +5,8 @@ const axios = require('axios');
 const parser = require('./parser');
 
 const URL = `https://www.blocket.se/bostad/uthyres?cg_multi=3020&sort=&ss=0&se=5&ros=&roe=3&bs=&be=&mre=10000&q=&q=&q=&is=1&save_search=1&l=0&md=th&f=b&ca=14&w=111`;
+const INTERVAL_IN_MS = 60000;
+const CHANNEL_ID = '384784131432775701';
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -29,7 +31,7 @@ client.on('ready', (evt) => {
 
 const sendMessage = (message) => {
     client.sendMessage({
-        to: '384784131432775701', // channel id from discord
+        to: CHANNEL_ID, // channel id from discord
         message: message
     });
 };
@@ -44,4 +46,4 @@ const requestLoop = setInterval(() => {
     }).catch((error) => {
         console.log(error);
     });
-}, 60000); // interval
+}, INTERVAL_IN_MS);
