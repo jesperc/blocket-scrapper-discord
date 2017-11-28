@@ -58,7 +58,7 @@ const rentIsLargerThan = (rentStr, min) => {
     if (index >= 0) {
         console.log(rentStr.substring(0, index));
         rentStr = rentStr.substring(0, index);
-        rentStr = Regex.Replace(rentStr, " +( |$)", "$1");
+        rentStr = rentStr.replace(/\s+/g, '');
         console.log(rentStr);
         let rent = Number(rentStr.substring(0, index));
         console.log(rent);
