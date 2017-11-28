@@ -31,7 +31,7 @@ client.on('ready', (evt) => {
 
 const sendMessage = (message) => {
     client.sendMessage({
-        to: CHANNEL_ID, // channel id from discord
+        to: DISCORD_CHANNEL_ID, // channel id from discord
         message: message
     });
 };
