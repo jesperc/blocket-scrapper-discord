@@ -6,7 +6,7 @@ const parser = require('./parser');
 
 const URL = `https://www.blocket.se/bostad/uthyres?cg_multi=3020&sort=&ss=0&se=5&ros=&roe=3&bs=&be=&mre=10000&q=&q=&q=&is=1&save_search=1&l=0&md=th&f=b&ca=14&w=111`;
 const INTERVAL_IN_MS = 60000;
-const CHANNEL_ID = '384784131432775701';
+const DISCORD_CHANNEL_ID = '385206542074642453';
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -26,7 +26,7 @@ client.on('ready', (evt) => {
     logger.info('Logged in as: ');
     logger.info(client.username + ' - (' + client.id + ')');
 
-    sendMessage('I will now fetch new apartments from blocket every 60 seconds and print them in this channel. :D');
+    sendMessage('I will now fetch new apartments from blocket every 60 seconds and print them in this channel. Beep Boop.');
 });
 
 const sendMessage = (message) => {
