@@ -3,7 +3,6 @@ let startingDate = new Date();
 
 module.exports = {
     parse: (html) => {
-        console.log(html.length);
         let href, title, rooms, rent, size, date;
 
         // href
