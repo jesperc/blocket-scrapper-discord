@@ -1,6 +1,6 @@
 let lastHref = "";
-let startingDate = new Date();
 
+const START_DATE = new Date();
 const MIN_PRICE = 7000;
 
 module.exports = {
@@ -43,8 +43,8 @@ module.exports = {
         end = html.indexOf('\"', start);
         date = html.substring(start, end);      
 
-        if (href !== lastHref && toDate(date) > startingDate) {
-            console.log(" ");
+        if (href !== lastHref && toDate(date) > START_DATE && rentIsLargerThan(rent, MIN_PRICE)) {
+            console.log(new Date().toString());
             console.log(`${title}, ${rent}, ${size}, ${rooms}, ${date}, ${href}`);
             lastHref = href;
             return `${title}, ${rent}, ${size}, ${rooms}, ${date}, ${href}`;
@@ -54,19 +54,15 @@ module.exports = {
 
 const rentIsLargerThan = (rentStr, min) => {
     let index = rentStr.indexOf('k');
-    console.log(index);
     if (index >= 0) {
-        console.log(rentStr.substring(0, index));
         rentStr = rentStr.substring(0, index);
         rentStr = rentStr.replace(/\s+/g, '');
-        console.log(rentStr);
         let rent = Number(rentStr.substring(0, index));
-        console.log(rent);
         if (! isNaN(rent)) {
-            console.log(rent + " => " + min);
             return rent >= min;
         }
     }
+
     // if the parsing failed, just return true. The rent will
     // atleast be less then the max rent passed in the URL.
     console.log("parsing failed, returns true");
