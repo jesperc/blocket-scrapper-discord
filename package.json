@@ -18,6 +18,6 @@
   "homepage": "https://github.com/jesperc/blocket-scrapper-discord#readme",
   "dependencies": {
     "axios": "^0.17.1",
-    "discord.io": "^2.5.3"
+    "discord.js": "^11.2.1"
   }
 }

@@ -11,7 +11,7 @@ module.exports = {
         let start = html.indexOf("item_link");
         start = html.indexOf("href", start);
         start = html.indexOf('\"', start) + 1;
-        let end = html.indexOf('\"', start);
+        let end = html.indexOf('\"', start); 
         href = html.substring(start, end);
 
         // title
