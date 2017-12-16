@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const auth = require('./auth.json');
+const secret = require('./secret.json');
 const axios = require('axios');
 const parser = require('./parser');
 
@@ -37,6 +37,8 @@ client.on('message', (message) => {
         }).catch((error) => {
             sendMessage('Get request: Failure');
         });
+    } else if (message.content === "!bio") {
+        sendMessage(secret.bio);
     }
 });
 
@@ -62,4 +64,4 @@ const requestLoop = setInterval(() => {
     });
 }, INTERVAL_IN_MS);
 
-client.login(auth.token);
+client.login(secret.token);
